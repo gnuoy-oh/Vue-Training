@@ -12,6 +12,11 @@ export const store = new Vuex.Store({
     jobs: [],
     asks: []
   },
+  getters: {
+    fetchedAsk(state) {
+      return state.ask;
+    }
+  },
   actions: {
     FETCH_NEWS(context) {
       fetchNewsList()
@@ -33,6 +38,7 @@ export const store = new Vuex.Store({
         })
         .catch((error) => console.log(error));
     },
+
     // 디스트럭처링을 적용한 FETCH_ASKS
     // context.commit = { commit }
     // response.data = { data }
