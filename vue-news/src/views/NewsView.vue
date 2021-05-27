@@ -1,7 +1,15 @@
 <template>
   <div>
-    <div v-for="user in this.$store.state.news" v-bind:key="user.index">
-      {{ user.title }}
+    <div v-for="item in $store.state.news" v-bind:key="item.index">
+      <a v-bind:href="item.url">{{ item.title }}</a>
+      <small>
+        {{ item.time_ago }}
+        by
+        <!-- http://localhost:8080/user/c0nsumer 의 형태로 user가 뒤에 넘어온다. -->
+        <router-link v-bind:to="`/user/${item.user}`">{{
+          item.user
+        }}</router-link>
+      </small>
     </div>
     news
   </div>
@@ -10,21 +18,11 @@
 <script>
 export default {
   props: [],
-  data() {
-    return {};
-  },
 
   // 1. 데이터 호출
   created() {
+    console.log("호출 전: ", this);
     this.$store.dispatch("FETCH_NEWS");
-    // fetchNewsList()
-    //   .then((response) => {
-    //     // 2. 담아온 데이터를 users에 담아준다.
-    //     this.users = response.data;
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   }
 };
 </script>
