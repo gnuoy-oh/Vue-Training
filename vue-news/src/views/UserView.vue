@@ -1,5 +1,6 @@
 <template>
   <div class="wrap">
+    <userProfile></userProfile>
     <p>name: {{ userInfo.id }}</p>
     <p>karma: {{ userInfo.karma }}</p>
     <p>created: {{ userInfo.created }}</p>
@@ -7,12 +8,12 @@
 </template>
 
 <script>
+import userProfile from "../components/UserProfile.vue";
 export default {
-  computed: {
-    userInfo() {
-      return this.$store.state.user;
-    }
+  components: {
+    userProfile
   },
+
   created() {
     console.log(this.$route);
     const userName = this.$route.params.id;
