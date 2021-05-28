@@ -1,9 +1,22 @@
 <template>
-  <div>
-    <div v-for="job in $store.state.jobs" v-bind:key="job.index">
-      <a v-bind:href="job.url">{{ job.title }}</a>
-      <small>{{ job.time_ago }}.{{ job.domain }}</small>
-    </div>
+  <div class="wrap">
+    <ul class="news-list">
+      <li v-for="job in $store.state.jobs" v-bind:key="job.index" class="post">
+        <!-- 포인트 영역 -->
+        <div class="points">
+          {{ job.points || 0 }}
+        </div>
+        <!-- 기타 정보 영역 -->
+        <div class="item">
+          <p class="news-title">
+            <a :href="job.url">{{ job.title }}</a>
+          </p>
+          <small class="link-text"
+            >{{ job.time_ago }} by {{ job.domain }}</small
+          >
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -33,4 +46,32 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.wrap {
+  padding: 8px;
+}
+.news-list {
+  margin: 0;
+  padding: 0;
+}
+.post {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.points {
+  width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #42b833;
+}
+.news-title {
+  margin: 0;
+}
+.link-text {
+  color: #828282;
+}
+</style>

@@ -14,5 +14,9 @@ export default {
   SET_USER(state, user) {
     state.user = user;
     console.log(state.user);
+  },
+  SET_ITEM(state, item) {
+    state.item = item;
+    console.log(state.item);
   }
 };

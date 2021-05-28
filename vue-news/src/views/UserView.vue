@@ -1,13 +1,18 @@
 <template>
-  <div>
-    <p>name: {{ this.$store.state.user.id }}</p>
-    <p>karma: {{ this.$store.state.user.karma }}</p>
-    <p>created: {{ this.$store.state.user.created }}</p>
+  <div class="wrap">
+    <p>name: {{ userInfo.id }}</p>
+    <p>karma: {{ userInfo.karma }}</p>
+    <p>created: {{ userInfo.created }}</p>
   </div>
 </template>
 
 <script>
 export default {
+  computed: {
+    userInfo() {
+      return this.$store.state.user;
+    }
+  },
   created() {
     console.log(this.$route);
     const userName = this.$route.params.id;
@@ -15,3 +20,12 @@ export default {
   }
 };
 </script>
+<style scoped>
+.wrap {
+  padding: 8px;
+}
+p {
+  padding: 8px 0;
+  margin: 0;
+}
+</style>
