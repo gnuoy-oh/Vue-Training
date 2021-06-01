@@ -39,19 +39,6 @@
 
 <script>
 export default {
-  // 1. 데이터 호출
-  created() {
-    const name = this.$route.name;
-    console.log("name ->", name);
-
-    if (name === "news") {
-      this.$store.dispatch("FETCH_NEWS");
-    } else if (name === "ask") {
-      this.$store.dispatch("FETCH_ASKS");
-    } else if (name === "jobs") {
-      this.$store.dispatch("FETCH_JOBS");
-    }
-  },
   computed: {
     listItems() {
       const name = this.$route.name;

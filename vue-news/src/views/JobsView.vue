@@ -6,24 +6,26 @@
 
 <script>
 import ListItem from "../components/ListItem";
-
+import bus from "../utils/bus.js";
 export default {
   components: {
     ListItem
   },
-  computed: {
-    // #3
-    // ...mapGetters({
-    //   fetchedAsk: "fetchedAsk"
-    // })
-    // #2
-    // ...mapState({
-    //   fetchedAsk: (state) => state.fetchedAsk
-    // })
-    // #1
-    // ask() {
-    //   return this.$store.state.ask;
-    // }
+  computed: {},
+  created() {
+    bus.$emit("start:spinner");
+
+    setTimeout(() => {
+      this.$store
+        .dispatch("FETCH_JOBS")
+        .then(() => {
+          console.log("fetched");
+          bus.$emit("end:spinner");
+        })
+        .catch(() => {
+          console.log("error");
+        });
+    }, 3000);
   }
 };
 </script>

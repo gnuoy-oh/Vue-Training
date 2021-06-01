@@ -11,9 +11,9 @@ export default {
     fetchNewsList()
       .then(response => {
         // actions에서는 state를 직접적으로 접근할 수 없고, mutations를 거쳐서 stats를 사용해야 한다.
-        console.log(response.data);
         context.commit("SET_NEWS", response.data);
         // state.news = reponse.data
+        return response;
       })
       .catch(error => {
         console.log(error);
