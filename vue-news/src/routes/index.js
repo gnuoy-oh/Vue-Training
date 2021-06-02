@@ -1,8 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import NewsView from "../views/NewsView.vue";
+import JobsView from "../views/JobsView.vue";
+import AskView from "../views/AskView.vue";
 import UserView from "../views/UserView.vue";
 import ItemView from "../views/ItemView.vue";
-import createListView from "../views/CreateListView.js";
+// import createListView from "../views/CreateListView.js";
 
 Vue.use(VueRouter);
 
@@ -19,17 +22,20 @@ export const router = new VueRouter({
       path: "/news",
       name: "news",
       // url 주소로 갔을 때, 표시될 컴포넌트 (해당 페이지)
-      component: createListView("NewsView")
+      // component: createListView("NewsView")
+      component: NewsView
     },
     {
       path: "/ask",
       name: "ask",
-      component: createListView("AskView")
+      // component: createListView("AskView")
+      component: AskView
     },
     {
       path: "/jobs",
       name: "jobs",
-      component: createListView("JobsView")
+      // component: createListView("JobsView")
+      component: JobsView
     },
     {
       // user에 대한 id라는 변수를 넘긴다는 뜻
